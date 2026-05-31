@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#2f765d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="阅读书签">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>阅读书签</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+    <link rel="stylesheet" href="./styles.css?v=public-2">
+  </head>
+  <body>
+    <div class="app-shell view-library">
+      <header class="topbar">
+        <button class="icon-button back-button" id="backToLibrary" type="button" aria-label="返回书架">‹</button>
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </div>
+          <div>
+            <h1>阅读书签</h1>
+            <p id="libraryCount">0 本书</p>
+          </div>
+        </div>
+
+        <div class="top-actions">
+          <button class="ghost-button data-button" id="importData" type="button">导入</button>
+          <button class="ghost-button data-button" id="exportData" type="button">导出</button>
+          <button class="primary-button" id="addBook" type="button">
+            <span aria-hidden="true">＋</span>
+            <span>新增</span>
+          </button>
+          <input id="importFile" type="file" hidden>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="library-panel" aria-label="书架">
+          <div class="library-tools">
+            <label class="search-field">
+              <span aria-hidden="true">⌕</span>
+              <input id="searchInput" type="search" placeholder="搜索书名、作者、大标签、小标签">
+            </label>
+            <div class="filter-toolbar">
+              <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false">
+                <span aria-hidden="true">☰</span>
+                <span>筛选</span>
+                <strong id="filterCount">0</strong>
+              </button>
+              <button class="clear-filter-button" id="clearFilters" type="button">清除</button>
+            </div>
+            <div class="active-filters" id="activeFilters"></div>
+          </div>
+          <div class="filter-panel" id="filterPanel" hidden></div>
+          <div class="book-list" id="bookList"></div>
+        </aside>
+
+        <section class="detail-panel" id="detailPanel" aria-label="书籍详情"></section>
+      </main>
+      <div class="import-panel" id="importPanel" hidden>
+        <div class="export-dialog" role="dialog" aria-modal="true" aria-labelledby="importTitle">
+          <div class="export-head">
+            <div>
+              <h2 id="importTitle">导入同步文本</h2>
+              <p>粘贴另一台设备导出的文本，或选择文件</p>
+            </div>
+            <button class="icon-button" id="closeImport" type="button" aria-label="关闭导入面板">×</button>
+          </div>
+          <div class="import-actions">
+            <button class="primary-button" id="applyImportText" type="button">导入文本</button>
+            <button class="ghost-button" id="chooseImportFile" type="button">选择文件</button>
+          </div>
+          <textarea id="importText" spellcheck="false" placeholder="粘贴导出的同步文本"></textarea>
+        </div>
+      </div>
+
+      <div class="export-panel" id="exportPanel" hidden>
+        <div class="export-dialog" role="dialog" aria-modal="true" aria-labelledby="exportTitle">
+          <div class="export-head">
+            <div>
+              <h2 id="exportTitle">导出同步文本</h2>
+              <p id="exportMeta">准备导出</p>
+            </div>
+            <button class="icon-button" id="closeExport" type="button" aria-label="关闭导出面板">×</button>
+          </div>
+          <div class="export-actions">
+            <button class="primary-button" id="copyExport" type="button">复制同步文本</button>
+            <button class="ghost-button" id="selectExport" type="button">全选文本</button>
+          </div>
+          <textarea id="exportText" readonly spellcheck="false"></textarea>
+          <p class="export-hint">另一台设备点“导入”，把这段文本粘贴进去即可。</p>
+        </div>
+      </div>
+      <div class="data-status" id="dataStatus" role="status" aria-live="polite"></div>
+    </div>
+
+    <script src="./app.js?v=public-2"></script>
+  </body>
+</html>
