@@ -8,8 +8,9 @@
     <meta name="apple-mobile-web-app-title" content="阅读书签">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>阅读书签</title>
-    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-    <link rel="stylesheet" href="../styles.css?v=public-1">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+    <link rel="stylesheet" href="./styles.css?v=public-2">
   </head>
   <body>
     <div class="app-shell view-library">
@@ -25,6 +26,7 @@
             <p id="libraryCount">0 本书</p>
           </div>
         </div>
+
         <div class="top-actions">
           <button class="ghost-button data-button" id="importData" type="button">导入</button>
           <button class="ghost-button data-button" id="exportData" type="button">导出</button>
@@ -35,6 +37,7 @@
           <input id="importFile" type="file" hidden>
         </div>
       </header>
+
       <main class="workspace">
         <aside class="library-panel" aria-label="书架">
           <div class="library-tools">
@@ -55,6 +58,7 @@
           <div class="filter-panel" id="filterPanel" hidden></div>
           <div class="book-list" id="bookList"></div>
         </aside>
+
         <section class="detail-panel" id="detailPanel" aria-label="书籍详情"></section>
       </main>
       <div class="import-panel" id="importPanel" hidden>
@@ -73,6 +77,7 @@
           <textarea id="importText" spellcheck="false" placeholder="粘贴导出的同步文本"></textarea>
         </div>
       </div>
+
       <div class="export-panel" id="exportPanel" hidden>
         <div class="export-dialog" role="dialog" aria-modal="true" aria-labelledby="exportTitle">
           <div class="export-head">
@@ -92,6 +97,7 @@
       </div>
       <div class="data-status" id="dataStatus" role="status" aria-live="polite"></div>
     </div>
-    <script src="../app.js?v=public-1"></script>
+
+    <script src="./app.js?v=public-2"></script>
   </body>
 </html>
